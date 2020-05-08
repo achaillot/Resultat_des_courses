@@ -27,6 +27,14 @@ Encore
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
+.copyFiles({
+    from: './assets/images',
+    to: 'images/[path][name].[ext]',
+
+    // if versioning is enabled, add the file hash too
+    // to: 'images/[path][name].[hash:8].[ext]',
+    })
+
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
@@ -54,7 +62,7 @@ Encore
     })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
