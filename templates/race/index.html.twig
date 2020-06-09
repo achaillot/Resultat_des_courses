@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Race index{% endblock %}
+
+{% block body %}
+    <h1>Race index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Total_distance</th>
+                <th>Swim_distance</th>
+                <th>Bike_distance</th>
+                <th>Run_distance</th>
+                <th>Total_time</th>
+                <th>Swim_time</th>
+                <th>Bike_time</th>
+                <th>Run_time</th>
+                <th>Vertical_gain</th>
+                <th>Price</th>
+                <th>Total_finisher</th>
+                <th>Ranking</th>
+                <th>Percent_finisher</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for race in races %}
+            <tr>
+                <td>{{ race.id }}</td>
+                <td>{{ race.name }}</td>
+                <td>{{ race.date ? race.date|date('Y-m-d') : '' }}</td>
+                <td>{{ race.totalDistance }}</td>
+                <td>{{ race.swimDistance }}</td>
+                <td>{{ race.bikeDistance }}</td>
+                <td>{{ race.runDistance }}</td>
+                <td>{{ race.totalTime ? race.totalTime|date('H:i:s') : '' }}</td>
+                <td>{{ race.swimTime ? race.swimTime|date('H:i:s') : '' }}</td>
+                <td>{{ race.bikeTime ? race.bikeTime|date('H:i:s') : '' }}</td>
+                <td>{{ race.runTime ? race.runTime|date('H:i:s') : '' }}</td>
+                <td>{{ race.verticalGain }}</td>
+                <td>{{ race.price }}</td>
+                <td>{{ race.totalFinisher }}</td>
+                <td>{{ race.ranking }}</td>
+                <td>{{ race.percentFinisher }}</td>
+                <td>{{ race.comment }}</td>
+                <td>
+                    <a href="{{ path('race_show', {'id': race.id}) }}">show</a>
+                    <a href="{{ path('race_edit', {'id': race.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('race_new') }}">Create new</a>
+{% endblock %}

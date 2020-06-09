@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Race{% endblock %}
+
+{% block body %}
+    <h1>Race</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ race.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ race.name }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ race.date ? race.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Total_distance</th>
+                <td>{{ race.totalDistance }}</td>
+            </tr>
+            <tr>
+                <th>Swim_distance</th>
+                <td>{{ race.swimDistance }}</td>
+            </tr>
+            <tr>
+                <th>Bike_distance</th>
+                <td>{{ race.bikeDistance }}</td>
+            </tr>
+            <tr>
+                <th>Run_distance</th>
+                <td>{{ race.runDistance }}</td>
+            </tr>
+            <tr>
+                <th>Total_time</th>
+                <td>{{ race.totalTime ? race.totalTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Swim_time</th>
+                <td>{{ race.swimTime ? race.swimTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Bike_time</th>
+                <td>{{ race.bikeTime ? race.bikeTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Run_time</th>
+                <td>{{ race.runTime ? race.runTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Vertical_gain</th>
+                <td>{{ race.verticalGain }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ race.price }}</td>
+            </tr>
+            <tr>
+                <th>Total_finisher</th>
+                <td>{{ race.totalFinisher }}</td>
+            </tr>
+            <tr>
+                <th>Ranking</th>
+                <td>{{ race.ranking }}</td>
+            </tr>
+            <tr>
+                <th>Percent_finisher</th>
+                <td>{{ race.percentFinisher }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ race.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('race_index') }}">back to list</a>
+
+    <a href="{{ path('race_edit', {'id': race.id}) }}">edit</a>
+
+    {{ include('race/_delete_form.html.twig') }}
+{% endblock %}
