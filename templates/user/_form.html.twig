@@ -1,24 +1,23 @@
 {{ form_start(form) }}
-    {# <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Prénom</label>
-            <input type="firstname" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Nom</label>
-            <input type="lastname" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Adresse email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Si tu souhaites protéger ton compte, saisi un mot de passe</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    </form> #}
 
-    {{ form_widget(form) }}
-    <button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ form_label(form.firstname, 'Prénom') }} 
+            {{ form_widget(form.firstname) }}
+            </br>
+            {{ form_label(form.lastname, 'Nom') }} 
+            {{ form_widget(form.lastname) }}
+            </br>
+            {{ form_label(form.picture, 'Photo') }} 
+            {{ form_widget(form.picture) }}
+            </br>
+            {{ form_label(form.email, 'Email') }} 
+            {{ form_widget(form.email) }}
+            </br>
+            {{ form_label(form.password, 'Si vous souhaitez protéger votre compte, saisissez un mot de passe') }} 
+            {{ form_widget(form.password) }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

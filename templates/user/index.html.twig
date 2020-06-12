@@ -3,39 +3,25 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <div class="main-title"> 
+        <h1>Bienvenue ami sportif !!</h1>
+        <p>Tu vas pouvoir enregistrer les résultats de toutes les courses que tu as fait.</br>Tu pourras ainsi vérifier tes classements, voir ton évolution
+        d'une année à l'autre, te mesurer aux autres sportifs inscrits...</p>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
-                <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <p>Si tu n'as pas encore de compte, tu peux en créer un <a href="{{ path('user_new') }}">ici.</a></p>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+
+    <p>Sinon, voici tous les sportifs déjà inscris</p>
+
+    {% for user in users %}
+        <div class="card" style="width: 18rem;">
+            <a class="dropdown-item" href="{{ path('user_show', {'id' : user.id }) }}">
+                <img class="card-img-top" src="{{ user.picture }}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text">{{ user.firstname }}</h3>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
 {% endblock %}

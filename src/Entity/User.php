@@ -43,6 +43,11 @@ class User
      */
     private $races;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $picture;
+
     public function __construct()
     {
         $this->races = new ArrayCollection();
@@ -128,6 +133,18 @@ class User
                 $race->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
