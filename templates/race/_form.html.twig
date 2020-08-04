@@ -1,4 +1,60 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ form_label(form.event, 'Evènement') }} 
+            {{ form_widget(form.event) }}
+            Si l'évènement n'apparait pas dans  la liste, vous pouvez le créer
+            <a href="{{ path('event_new') }}">ici</a>
+            </br>
+            {{ form_label(form.name, 'Nom de la course') }} 
+            {{ form_widget(form.name) }}
+            </br>
+            {{ form_label(form.date, 'Date') }} 
+            {{ form_widget(form.date) }}
+            </br>
+            {{ form_label(form.total_distance, 'Distance totale (pour une course autre qu\'un triathlon)') }}
+            {{ form_widget(form.total_distance) }}
+            </br>
+            {{ form_label(form.swim_distance, 'Distance en mètres natation (pour un triathlon)') }} 
+            {{ form_widget(form.swim_distance) }}
+            </br>
+            {{ form_label(form.bike_distance, 'Distance en km vélo (pour un triathlon)') }} 
+            {{ form_widget(form.bike_distance) }}
+            </br>
+            {{ form_label(form.run_distance, 'Distance en km course à pied (pour un triathlon)') }} 
+            {{ form_widget(form.run_distance) }}
+            </br>
+            {{ form_label(form.total_time, 'Temps total') }} 
+            <input type="time" step="1">
+            {{ form_widget(form.total_time) }}
+            </input>
+            </br>
+            {{ form_label(form.swim_time, 'Temps course à pied (pour un triathlon)') }} 
+            {{ form_widget(form.swim_time) }}
+            </br>
+            {{ form_label(form.bike_time, 'Temps vélo (pour un triathlon)') }} 
+            {{ form_widget(form.bike_time) }}
+            </br>
+            {{ form_label(form.run_time, 'Temps course-à-pied (pour un triathlon)') }} 
+            {{ form_widget(form.run_time) }}
+            </br>
+            {{ form_label(form.vertical_gain, 'Dénivelé positif (pour un trail)') }} 
+            {{ form_widget(form.vertical_gain) }}
+            </br>
+            {{ form_label(form.price, 'Tarif d\'inscription') }} 
+            {{ form_widget(form.price) }}
+            </br>
+            {{ form_label(form.total_finisher, 'Nombre total de finishers') }} 
+            {{ form_widget(form.total_finisher) }}
+            </br>
+            {{ form_label(form.ranking, 'Place') }} 
+            {{ form_widget(form.ranking) }}
+            </br>
+            {{ form_label(form.comment, 'Commentaire') }} 
+            {{ form_widget(form.comment) }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

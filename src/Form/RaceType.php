@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Race;
+use App\Entity\Event;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,10 +28,12 @@ class RaceType extends AbstractType
             ->add('price')
             ->add('total_finisher')
             ->add('ranking')
-            ->add('percent_finisher')
+            ->remove('percent_finisher')
             ->add('comment')
-            ->add('event')
-            ->add('user')
+            ->add('event', EntityType::class, [
+                'class' => Event::class,
+            ])
+            // ->add('user')
         ;
     }
 

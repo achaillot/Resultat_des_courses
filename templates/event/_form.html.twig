@@ -2,20 +2,16 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            {{ form_label(form.name, 'Nom de l\'évênement') }} 
+            {{ form_label(form.name, 'Nom de l\'évènement') }} 
             {{ form_widget(form.name) }}
             </br>
             {{ form_label(form.city, 'Ville') }} 
             {{ form_widget(form.city) }}
             </br>
-            {# TODO : revoir pour sélectionner la nature de l'épreuve #}
             {{ form_label(form.type, 'Nature de l\'épreuve') }}
             {{ form_widget(form.type) }}
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
-
-    {# {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button> #}
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

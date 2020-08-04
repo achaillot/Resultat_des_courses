@@ -29,7 +29,7 @@ class EventController extends AbstractController
     /**
      * @Route("/new", name="event_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserRepository $userRepository ,EventRepository $eventRepository): Response
     {
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
@@ -45,6 +45,8 @@ class EventController extends AbstractController
 
         return $this->render('event/new.html.twig', [
             'event' => $event,
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Race;
 use App\Form\RaceType;
 use App\Repository\RaceRepository;
+use App\Repository\UserRepository;
+use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +30,7 @@ class RaceController extends AbstractController
     /**
      * @Route("/new", name="race_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         $race = new Race();
         $form = $this->createForm(RaceType::class, $race);
@@ -36,14 +38,20 @@ class RaceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $race->percent_finisher = ($request->ranking * 100) / $request->total_finisher;
+
             $entityManager->persist($race);
             $entityManager->flush();
+        
 
             return $this->redirectToRoute('race_index');
         }
 
         return $this->render('race/new.html.twig', [
             'race' => $race,
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
