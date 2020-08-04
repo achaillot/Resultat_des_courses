@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,17 +52,19 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event): Response
+    public function show(Event $event, UserRepository $userRepository ,EventRepository $eventRepository): Response
     {
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Event $event): Response
+    public function edit(Request $request, Event $event, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -75,6 +78,8 @@ class EventController extends AbstractController
         return $this->render('event/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 

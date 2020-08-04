@@ -30,7 +30,7 @@ class UserController extends AbstractController
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -47,23 +47,27 @@ class UserController extends AbstractController
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(UserRepository $userRepository, EventRepository $eventRepository, User $user): Response
     {
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -77,6 +81,8 @@ class UserController extends AbstractController
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 

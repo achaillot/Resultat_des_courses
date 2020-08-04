@@ -8,7 +8,7 @@
             {{ form_label(form.lastname, 'Nom') }} 
             {{ form_widget(form.lastname) }}
             </br>
-            {{ form_label(form.picture, 'Photo') }} 
+            {{ form_label(form.picture, 'Photo') }}
             {{ form_widget(form.picture) }}
             </br>
             {{ form_label(form.email, 'Email') }} 
@@ -20,4 +20,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    
 {{ form_end(form) }}
