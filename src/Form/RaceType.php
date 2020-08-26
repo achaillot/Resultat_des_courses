@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class RaceType extends AbstractType
 {
@@ -15,15 +17,27 @@ class RaceType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('date')
+            ->add('date', DateType::class, [
+                'widget' => 'single_text',
+                'format' =>'dd-MM-yyyy',
+                'html5' => false,
+            ])
             ->add('total_distance')
             ->add('swim_distance')
             ->add('bike_distance')
             ->add('run_distance')
-            ->add('total_time')
-            ->add('swim_time')
-            ->add('bike_time')
-            ->add('run_time')
+            ->add('total_time', TimeType::class, [
+                'with_seconds' => true,
+            ])
+            ->add('swim_time', TimeType::class, [
+                'with_seconds' => true,
+            ])
+            ->add('bike_time', TimeType::class, [
+                'with_seconds' => true,
+            ])
+            ->add('run_time', TimeType::class, [
+                'with_seconds' => true,
+            ])
             ->add('vertical_gain')
             ->add('price')
             ->add('total_finisher')
@@ -33,7 +47,7 @@ class RaceType extends AbstractType
             ->add('event', EntityType::class, [
                 'class' => Event::class,
             ])
-            // ->add('user')
+            ->remove('user')
         ;
     }
 

@@ -10,7 +10,7 @@
             {{ form_label(form.name, 'Nom de la course') }} 
             {{ form_widget(form.name) }}
             </br>
-            {{ form_label(form.date, 'Date') }} 
+            {{ form_label(form.date, 'Date au format JJ-MM-AAAA') }} 
             {{ form_widget(form.date) }}
             </br>
             {{ form_label(form.total_distance, 'Distance totale (pour une course autre qu\'un triathlon)') }}
@@ -26,11 +26,9 @@
             {{ form_widget(form.run_distance) }}
             </br>
             {{ form_label(form.total_time, 'Temps total') }} 
-            <input type="time" step="1">
             {{ form_widget(form.total_time) }}
-            </input>
             </br>
-            {{ form_label(form.swim_time, 'Temps course à pied (pour un triathlon)') }} 
+            {{ form_label(form.swim_time, 'Temps natation (pour un triathlon)') }}
             {{ form_widget(form.swim_time) }}
             </br>
             {{ form_label(form.bike_time, 'Temps vélo (pour un triathlon)') }} 

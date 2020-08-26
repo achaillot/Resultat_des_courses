@@ -34,8 +34,9 @@
             <div class="card" style="width: 25%;">
                 <img class="card-img-top" src="{{ race.event.type.image }}" alt="Card image type">
                 <div class="card-body">
-                    <h3>{{ race.event.name }}</h3> - <h6>le {{ race.date|date("d/m/Y") }} à {{ race.event.city }}</h6>
-                    <h5>{{ race.name }}</h5>
+                    <h3>{{ race.event.name }}</h3><h6>le {{ race.date|date("d/m/Y") }} à {{ race.event.city }}</h6>
+                    </br>
+                    Course : <h5>{{ race.name }}</h5>
                     -----------------------
                     <div class="race-details">
                         <h6><strong>Détails de la course :</strong></h6>
@@ -61,7 +62,7 @@
                             {% if race.event.type.name == "Trail" %}
                                 <li>Dénivelé positif : {{ race.verticalGain?race.verticalGain:"/" }} m</li>
                             {% endif %}
-                            - - - - - 
+                            </br> 
                             <li>Prix de l'inscription : {{ race.price }}€</li>
                         </ul>
                     </div>
@@ -71,17 +72,22 @@
                         <ul>
                             <li><strong>Classement général : {{ race.ranking }}</strong> / {{ race.totalFinisher }}</li>
                             <li>Pourcentage de finishers : {{ race.percentFinisher }} %</li>
+                        </ul>
                     </div>
+                    {% if race.comment %}
+                        -----------------------
+                        <div class="race-comment">
+                            <p><strong>Commentaire :</strong></p>
+                            <p>{{ race.comment }}</p>
+                        </div>
+                    {% endif %}
+
                 </div>
             </div>
         {% endfor %}
     </div>
-    
 
-
-
-
-    <a class="btn btn-success" href="{{ path('race_new') }}" role="button">Ajouter un nouveau résultat</a>
+    <a class="btn btn-success" href="{{ path('race_new', {'id': user.id}) }}" role="button">Ajouter un nouveau résultat</a>
     </br>
     <a href="{{ path('user_index') }}">Retour à l'accueil</a>
 

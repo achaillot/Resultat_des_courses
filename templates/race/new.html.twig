@@ -6,6 +6,6 @@
     <h1>Complétez les détails de votre course</h1>
 
     {{ include('race/_form.html.twig') }}
-
-    <a href="{{ path('race_index') }}">Retour à la liste des courses</a>
+    
+    <a href="{{ path('user_show', {'id': user.id}) }}">Retour à la liste de vos courses</a>
 {% endblock %}

@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Type;
 use App\Form\TypeType;
+use App\Repository\EventRepository;
 use App\Repository\TypeRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +20,11 @@ class TypeController extends AbstractController
     /**
      * @Route("/", name="type_index", methods={"GET"})
      */
-    public function index(TypeRepository $typeRepository): Response
+    public function index(TypeRepository $typeRepository, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         return $this->render('type/index.html.twig', [
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
             'types' => $typeRepository->findAll(),
         ]);
     }

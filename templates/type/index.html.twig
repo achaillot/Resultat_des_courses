@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ type.id }}</td>
                 <td>{{ type.name }}</td>
-                <td>{{ type.image }}</td>
+                <td><img src="{{ type.image }}" alt="type image" style="max-width: 150px"></td>
                 <td>
                     <a href="{{ path('type_show', {'id': type.id}) }}">show</a>
                     <a href="{{ path('type_edit', {'id': type.id}) }}">edit</a>
