@@ -18,8 +18,8 @@ import ReactDOM from 'react-dom';
 function App () {
     return (
         <div>
-            <h1>Helllo, world!</h1>
-            <p>Teeeeeest</p>
+            <h1>test react...</h1>
+            <p>...test react</p>
         </div>
     )
 }

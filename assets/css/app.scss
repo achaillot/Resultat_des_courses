@@ -4,7 +4,39 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+// homepage
+
+// navbar
+.navbar {
+    background-color: #db892c;
+}
+
+.navbar a {
+    color: black;
+    font-size: 20px;
+}
+
+#navbar-brand {
+    font-size: 30px;  
+}
+
+// react welcome message
+#welcome {
+    color: lightgrey;
+}
+
+// app main title and message
+.main-title {
+    background-color: green;
+}
+
+// users cards
+.card {
+    justify-content: space-between;
+}
+
 .races{
     justify-content: space-around; 
 }
+
 

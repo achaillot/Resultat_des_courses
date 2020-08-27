@@ -15,16 +15,20 @@
 
     <p>Sinon, voici tous les sportifs déjà inscris</p>
 
-    {% for user in users %}
-        <div class="card" style="width: 18rem;">
-            <a class="dropdown-item" href="{{ path('user_show', {'id' : user.id }) }}">
-                <img class="card-img-top" src="{{ user.picture }}" alt="Card image cap">
-                <div class="card-body">
-                    <h3 class="card-text">{{ user.firstname }}</h3>
+    <div class="container">
+        <div class="row justify-content-between">
+            {% for user in users %}
+                <div class="card col-4-sm bg-secondary" style="width: 18rem;">
+                    <a class="dropdown-item mt-4" href="{{ path('user_show', {'id' : user.id }) }}">
+                        <img class="card-img-top" src="{{ user.picture }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-text text-center">{{ user.firstname }}</h3>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('resultat-react') }}
