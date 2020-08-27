@@ -46,6 +46,7 @@ class RaceType extends AbstractType
             ->add('comment')
             ->add('event', EntityType::class, [
                 'class' => Event::class,
+                'placeholder' => 'Choisissez dans la liste',
             ])
             ->remove('user')
         ;

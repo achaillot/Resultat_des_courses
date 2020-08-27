@@ -16,8 +16,11 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@babel/preset-react": "^7.0.0",
         "bootstrap": "^4.4.1",
         "jquery": "^3.5.1",
-        "popper.js": "^1.16.1"
+        "popper.js": "^1.16.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
     }
 }

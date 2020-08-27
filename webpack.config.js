@@ -75,7 +75,9 @@ Encore
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
+    .enableReactPreset()
+    .addEntry('resultat-react', './assets/js/Resultat-React/app.js')
+
     //.addEntry('admin', './assets/js/admin.js')
 ;
 

@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
+    <div id='welcome'></div>
     <div class="main-title"> 
         <h1>Bienvenue ami sportif !!</h1>
         <p>Tu vas pouvoir enregistrer les résultats de toutes les courses que tu as fait.</br>Tu pourras ainsi vérifier tes classements, voir ton évolution
@@ -25,3 +26,7 @@
         </div>
     {% endfor %}
 {% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('resultat-react') }}
+{% endblock %}
+
