@@ -3,35 +3,18 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
+
     <h1>Bienvenue {{ user.firstname }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            {# <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr> #}
-        </tbody>
-    </table>
-
-    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifer les informations de mon compte</a>
+    <div id='user'></div>
     </br>
+    <a class="btn btn-success" href="{{ path('race_new', {'id': user.id}) }}" role="button">Ajouter un nouveau résultat</a>
+    </br>
+
 
     <div class="row races">
         {% for race in user.races %}
-            <div class="card" style="width: 25%;">
+            <div class="card col-4 race-card">
                 <img class="card-img-top" src="{{ race.event.type.image }}" alt="Card image type">
                 <div class="card-body">
                     <h3>{{ race.event.name }}</h3><h6>le {{ race.date|date("d/m/Y") }} à {{ race.event.city }}</h6>
@@ -93,3 +76,9 @@
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
+
+{# block commenté parce que ça pète mon dropdown
+{% block javascripts %}
+    {{ encore_entry_script_tags('user-react') }}
+{% endblock %} #}
+

@@ -4,8 +4,7 @@
         <div class="form-group col-md-6">
             {{ form_label(form.event, 'Evènement') }} 
             {{ form_widget(form.event) }}
-            Si l'évènement n'apparait pas dans  la liste, vous pouvez le créer
-            <a href="{{ path('event_new') }}">ici</a>
+            Si l'évènement n'apparait pas dans  la liste, vous pouvez le créer <a href="{{ path('event_new') }}">ici</a>
             </br>
             {{ form_label(form.name, 'Nom de la course') }} 
             {{ form_widget(form.name) }}

@@ -76,7 +76,8 @@ Encore
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     .enableReactPreset()
-    .addEntry('resultat-react', './assets/js/Resultat-React/app.js')
+    // .addEntry('resultat-react', './assets/js/Resultat-React/app.js')
+    // .addEntry('user-react', './assets/js/User-Page-React/app.js')
 
     //.addEntry('admin', './assets/js/admin.js')
 ;

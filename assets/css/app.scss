@@ -4,7 +4,13 @@
 
 @import "~bootstrap/scss/bootstrap";
 
-// homepage
+// HOMEPAGE
+
+body {
+    background-image: url(https://us.123rf.com/450wm/nokfreelance/nokfreelance1705/nokfreelance170500366/79626216-abstrait-d%C3%A9grad%C3%A9-gris-arri%C3%A8re-plan-gris-studio-studio-ton-sombre-pour-arri%C3%A8re-plan-ou-papier-peint-usag%C3%A9-.jpg?ver=6);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 // navbar
 .navbar {
@@ -25,11 +31,6 @@
     color: lightgrey;
 }
 
-// app main title and message
-.main-title {
-    background-color: green;
-}
-
 // users cards
 .card {
     justify-content: space-between;
@@ -39,4 +40,11 @@
     justify-content: space-around; 
 }
 
+////////////////////////////
 
+// USER PAGE
+
+.race-card {
+    max-width: 30%;
+    margin: 25px;
+}
