@@ -5,6 +5,9 @@
 {% block body %}
     <h1>Course sélectionnée</h1>
 
+    <a class="btn btn-outline-primary btn-lg compare-button" href="{{ path('race_compare', {'id': race.id}) }}" role="button">Comparer avec une autre édition de cette course</a>
+
+
     <div class="card col-4 race-card">
         <img class="card-img-top" src="{{ race.event.type.image }}" alt="Card image type">
         <div class="card-body">

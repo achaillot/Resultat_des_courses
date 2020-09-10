@@ -93,6 +93,21 @@ class RaceController extends AbstractController
     }
 
     /**
+     * @Route("/compare/{id}", name="race_compare")
+     */
+    public function compare(Race $race, UserRepository $userRepository, EventRepository $eventRepository, RaceRepository $raceRepository): Response
+    {
+
+
+        return $this->render('race/compare.html.twig', [
+            'user' => $race->getUser(),
+            'races' => $raceRepository->compare($race),
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/{id}", name="race_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Race $race): Response

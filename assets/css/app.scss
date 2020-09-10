@@ -31,6 +31,10 @@ body {
     color: lightgrey;
 }
 
+////////////////////////////
+
+// USER PAGE
+
 // users cards
 .card {
     justify-content: space-between;
@@ -40,12 +44,18 @@ body {
     justify-content: space-around; 
 }
 
-////////////////////////////
-
-// USER PAGE
-
 .race-card {
     max-width: 30%;
     margin: 25px;
+}
+
+////////////////////////////
+
+// RACE DETAIL PAGE
+
+// compare button
+
+.compare-button {
+    margin: auto ;
 }
 

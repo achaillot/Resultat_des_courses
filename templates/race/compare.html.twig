@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course{% endblock %}
+
+{% block body %}
+
+    <div class="row races">
+        {% for race in races %}
+            <div class="card col-4 race-card">
+                <img class="card-img-top" src="{{ race.event.type.image }}" alt="Card image type">
+                <div class="card-body">
+                    <h3>{{ race.event.name }}</h3><h6>le {{ race.date|date("d/m/Y") }} à {{ race.event.city }}</h6>
+                    </br>
+                    Course : <h5>{{ race.name }}</h5>
+                    -----------------------
+                    <div class="race-result">
+                        <p><strong>Résultat :</strong></p>
+                        <ul>
+                            <li><strong>Classement général : {{ race.ranking }}</strong> / {{ race.totalFinisher }}</li>
+                            <li>Pourcentage de finishers : {{ race.percentFinisher }} %</li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-outline-secondary" href="{{ path('race_show', {'id' : race.id }) }}" role="button">Voir les détails de la course</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a class="btn btn-success" href="{{ path('user_show', {'id': user.id}) }}" role="button">Retour à la liste de vos courses</a>
+
+{% endblock %}
