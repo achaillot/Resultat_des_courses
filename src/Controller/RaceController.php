@@ -61,17 +61,19 @@ class RaceController extends AbstractController
     /**
      * @Route("/{id}", name="race_show", methods={"GET"})
      */
-    public function show(Race $race): Response
+    public function show(Race $race, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         return $this->render('race/show.html.twig', [
             'race' => $race,
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="race_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Race $race): Response
+    public function edit(Request $request, Race $race, UserRepository $userRepository, EventRepository $eventRepository): Response
     {
         $form = $this->createForm(RaceType::class, $race);
         $form->handleRequest($request);
@@ -85,6 +87,8 @@ class RaceController extends AbstractController
         return $this->render('race/edit.html.twig', [
             'race' => $race,
             'form' => $form->createView(),
+            'users' => $userRepository->findAll(),
+            'events' => $eventRepository->findAll(),
         ]);
     }
 

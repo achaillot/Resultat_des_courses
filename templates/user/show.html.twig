@@ -21,50 +21,13 @@
                     </br>
                     Course : <h5>{{ race.name }}</h5>
                     -----------------------
-                    <div class="race-details">
-                        <h6><strong>Détails de la course :</strong></h6>
-                        <ul>
-                            {% if race.event.type.name != "Triathlon" %}
-                                <li>Distance totale : {{ race.totalDistance?race.totalDistance:"/" }} km</li>
-                            {% endif %}
-
-                            {% if race.event.type.name == "Triathlon" %}
-                                <li>Distance natation : {{ race.swimDistance?race.swimDistance:"/" }} m</li>
-                                <li>Distance vélo : {{ race.bikeDistance?race.bikeDistance:"/" }} km</li>
-                                <li>Distance course à pied : {{ race.runDistance?race.runDistance:"/" }} km</li>
-                            {% endif %}
-
-                            <li>Temps total : {{ race.totalTime?race.totalTime|date('H:i:s'):"/" }}</li>
-
-                            {% if race.event.type.name == "Triathlon" %}
-                                <li>Temps natation : {{ race.swimTime?race.swimTime|date('H:i:s'):"/" }}</li>
-                                <li>Temps vélo : {{ race.bikeTime?race.bikeTime|date('H:i:s'):"/" }}</li>
-                                <li>Temps course à pied : {{ race.runTime?race.runTime|date('H:i:s'):"/" }}</li>
-                            {% endif %}
-
-                            {% if race.event.type.name == "Trail" %}
-                                <li>Dénivelé positif : {{ race.verticalGain?race.verticalGain:"/" }} m</li>
-                            {% endif %}
-                            </br> 
-                            <li>Prix de l'inscription : {{ race.price }}€</li>
-                        </ul>
-                    </div>
-                    -----------------------
                     <div class="race-result">
                         <p><strong>Résultat :</strong></p>
                         <ul>
                             <li><strong>Classement général : {{ race.ranking }}</strong> / {{ race.totalFinisher }}</li>
-                            <li>Pourcentage de finishers : {{ race.percentFinisher }} %</li>
                         </ul>
                     </div>
-                    {% if race.comment %}
-                        -----------------------
-                        <div class="race-comment">
-                            <p><strong>Commentaire :</strong></p>
-                            <p>{{ race.comment }}</p>
-                        </div>
-                    {% endif %}
-
+                    <a class="btn btn-outline-secondary" href="{{ path('race_show', {'id' : race.id }) }}" role="button">Voir les détails de la course</a>
                 </div>
             </div>
         {% endfor %}
